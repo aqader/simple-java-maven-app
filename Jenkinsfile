@@ -5,7 +5,7 @@ pipeline {
         jdk 'jdk17' 
     }
     environment {
-        REPO = 'matrix' // Artifactory repository
+        REPO = 'matrix' 
     }
     stages {
         stage('Build') { 
@@ -16,10 +16,10 @@ pipeline {
         stage('Upload to Artifactory') {
             steps {
                 script {
-                    def server = Artifactory.server('mtx_jfrog') // Artifactory server ID in Jenkins
+                    def server = Artifactory.server('mtx_jfrog') 
                     def uploadSpec = """{
                         "files": [{
-                            "pattern": "target/*.jar", // Adjust to match your artifact
+                            "pattern": "target/*.jar", 
                             "target": "${REPO}/simple-java-maven-app/"
                         }]
                     }"""
